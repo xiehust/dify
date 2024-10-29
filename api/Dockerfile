@@ -59,6 +59,7 @@ RUN apt-get update \
     # install a chinese font to support the use of tools like matplotlib
     && apt-get install -y fonts-noto-cjk \
     && apt-get autoremove -y \
+    && apt-get install -y ffmpeg \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy Python environment and packages

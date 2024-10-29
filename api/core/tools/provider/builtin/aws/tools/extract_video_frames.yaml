@@ -1,0 +1,140 @@
+identity:
+  name: extract_video_frames
+  author: AWS
+  label:
+    en_US: Extract Video Frames
+    zh_Hans: 视频截取帧
+    pt_BR: Extract Video Frames
+  icon: icon.svg
+description:
+  human:
+    en_US: A tool for Extract Video Frames    
+    zh_Hans: 视频截取帧工具
+    pt_BR: A tool for Extract Video Frames.
+  llm: A tool for Extract Video Frames.
+parameters:
+  - name: file_url
+    type: string
+    required: true
+    label:
+      en_US: video file url
+      zh_Hans: 视频文件url
+      pt_BR: video file url
+    human_description:
+      en_US: video file url
+      zh_Hans: 视频文件url
+      pt_BR: video file url
+    llm_description:  video  file url for extraction
+    form: llm
+  - name: num_clips
+    type: number
+    required: true
+    default: 3
+    label:
+      en_US:  Num of Clips
+      zh_Hans: 截取片段数量
+      pt_BR: Num of Clips
+    human_description:
+      en_US: Num of Clip
+      zh_Hans: 截取片段数量
+      pt_BR: Num of Clip. 
+    llm_description: Num of Clip to extract.
+    form: form
+  - name: clip_duration_minutes
+    type: number
+    default: 1
+    required: true
+    label:
+      en_US: Clip Duration (Minutes)
+      zh_Hans: 截取片段时长(分钟)
+      pt_BR: Clip Duration (Minutes)
+    human_description:
+      en_US: Clip Duration (Minutes)
+      zh_Hans: 取片段时长(分钟)
+      pt_BR: Clip Duration (Minutes)
+    llm_description: Clip Duration (Minutes)
+    form: form
+  - name: method
+    type: select
+    default: uniform
+    required: true
+    label:
+      en_US: Method of extracting frame
+      zh_Hans: 抽帧的方法
+      pt_BR: Method of extracting frame
+    human_description:
+      en_US: Method of extracting frame
+      zh_Hans: 抽帧的方法
+      pt_BR: Method of extracting frame
+    llm_description: Method of extracting frame
+    options:
+      - value: random
+        label:
+          en_US: Random
+          zh_Hans: 随机
+      - value: difference
+        label:
+          en_US: Key Frames
+          zh_Hans: 关键帧
+      - value: uniform
+        label:
+          en_US: uniform
+          zh_Hans: 平均
+    form: form
+  - name: num_frames
+    type: number
+    default: 20
+    required: true
+    label:
+      en_US: Num of frames per clip
+      zh_Hans: 平均每影片抽取帧数
+      pt_BR: Num of frames per clip
+    human_description:
+      en_US: Num of frames per clip
+      zh_Hans: 平均每影片抽取帧数
+      pt_BR: Num of frames per clip
+    llm_description: Num of frames per clip
+    form: form
+  - name: threshold
+    type: number
+    required: true
+    default: 0.96
+    label:
+      en_US:  Threshold of difference between frames
+      zh_Hans: 关键帧比较阈值 
+      pt_BR: Threshold of difference between frames
+    human_description:
+      en_US:  Threshold of difference between frames
+      zh_Hans: 关键帧比较阈值 
+      pt_BR: Threshold of difference between frames
+    llm_description: Threshold of difference between frames
+    form: form
+  - name: model_id
+    type: string
+    required: true
+    default: anthropic.claude-3-5-sonnet-20241022-v2:0
+    label:
+      en_US: Model ID
+      zh_Hans: Model ID
+      pt_BR: Model ID
+    form: form
+  - name: instruction
+    type: string
+    required: true
+    default: Please summarize the video
+    label:
+      en_US: Instruction Prompt
+      zh_Hans: Instruction Prompt
+      pt_BR: Instruction Prompt
+    form: form
+  - name: aws_region
+    type: string
+    required: false
+    label:
+      en_US: AWS Region
+      zh_Hans: AWS 区域
+    human_description:
+      en_US: Please enter the AWS region for the transcribe service, for example 'us-east-1'.
+      zh_Hans: 请输入Transcribe的 AWS 区域，例如 'us-east-1'。
+    llm_description: Please enter the AWS region for the transcribe service, for example 'us-east-1'.
+    form: form
